@@ -6,6 +6,8 @@ import (
 	"gofr.dev/pkg/gofr"
 )
 
+var Context *gofr.Context
+
 type TaskController struct {
 	TaskUseCase application.TaskUseCase
 }
@@ -17,6 +19,7 @@ type TaskResponse struct {
 }
 
 func (controller TaskController) CreateTask(ctx *gofr.Context) (interface{}, error) {
+	Context = ctx
     var request model.TaskRequest
 	ctx.Bind(&request)
     task, err := controller.TaskUseCase.CreateTask(request.TaskDescription)
@@ -32,6 +35,7 @@ func (controller TaskController) CreateTask(ctx *gofr.Context) (interface{}, err
 }
 
 func (controller TaskController) UpdateTask(ctx *gofr.Context) (interface{}, error) {
+	Context = ctx
 	var request model.TaskRequest
     taskId:= ctx.Request.PathParam("id")
     ctx.Bind(&request)

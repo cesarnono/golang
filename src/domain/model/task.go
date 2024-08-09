@@ -91,11 +91,14 @@ func validateChangeStatus(currentStatus, nextStatus string) error{
 
 func(taskService *TaskService) Update(request TaskRequest) (string, error) {
 	if err := validateRequest(request); err != nil {
-		return "", err
+		return "", ValidationError{error: err.Error()}
 	}
 	task := taskService.GetById(request.TaskId)
+	if(task == Task{}) {
+		return "", NotFoundError{error: fmt.Sprintf("task: %s not found", request.TaskId)}
+	}
 	if err := validateChangeStatus(string(task.Status), request.Status); err != nil{
-		return "", err
+		return "", ValidationError{error: err.Error()}
 	}
 	task.Description=request.TaskDescription
 	task.Status= statusTask(request.Status)
