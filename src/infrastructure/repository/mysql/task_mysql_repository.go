@@ -1,6 +1,8 @@
 package mysql
 
 import (
+	"fmt"
+
 	"godev.com/todo-app/src/domain/model"
 	"godev.com/todo-app/src/infrastructure/rest"
 )
@@ -15,8 +17,20 @@ func (repository TaskMySqlRepository) Get(id string) *model.Task {
    }
 
 func (repository TaskMySqlRepository) Save(task model.Task) {
-	rest.Context.SQL.ExecContext(rest.Context, "INSERT INTO task (id, description, status,date_created, date_updated) VALUES (?,?,?,?,?)",
-	 task.GetId(), task.GetDescription(), task.GetStatus(), task.GetDateCreated(), task.GetDateUpdated())
+	res, err := rest.Context.SQL.ExecContext(rest.Context, "INSERT INTO task (id, description, status,date_created, date_updated) VALUES ($1, $2, $3, $4, $5)",task.GetId(),
+	 task.GetDescription(), task.GetStatus(), task.GetDateCreated(), task.GetDateUpdated())
+	 if err != nil {
+		fmt.Printf("error: %s", err.Error());
+		return
+	 }
+
+	 rows, err := res.RowsAffected()
+	 if err != nil {
+		fmt.Printf("error: %s", err.Error());
+		return
+	 }
+
+	 fmt.Print(rows)
 }
 
 func (repository TaskMySqlRepository) Update(task model.Task) {

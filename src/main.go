@@ -5,6 +5,7 @@ import (
 	"godev.com/todo-app/src/domain/model"
 	"godev.com/todo-app/src/infrastructure/repository/mysql"
 	"godev.com/todo-app/src/infrastructure/rest"
+	"godev.com/todo-app/src/migration"
 	"gofr.dev/pkg/gofr"
 )
 
@@ -12,6 +13,8 @@ var taskController rest.TaskController
 
 func main() {
     app := gofr.New()
+
+    app.Migrate(migration.All())
     app.POST("/task", func(ctx *gofr.Context) (interface{}, error) {
       return taskController.CreateTask(ctx);
     })
