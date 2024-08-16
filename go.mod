@@ -1,10 +1,12 @@
 module godev.com/todo-app
 
-go 1.22
+go 1.21
+
+toolchain go1.22.4
 
 require (
 	github.com/google/uuid v1.6.0
-	gofr.dev v1.14.1
+	gofr.dev v1.11.0
 )
 
 require (
