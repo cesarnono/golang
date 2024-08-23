@@ -28,6 +28,7 @@ func main() {
 
 
 func init() {
+    
 	taskMySqlRepository := mysql.TaskMySqlRepository{}
 
     taskService := model.NewTaskService(taskMySqlRepository)
