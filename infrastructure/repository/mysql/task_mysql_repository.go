@@ -3,8 +3,8 @@ package mysql
 import (
 	"fmt"
 
-	"godev.com/todo-app/src/domain/model"
-	"godev.com/todo-app/src/infrastructure/rest"
+	"godev.com/todo-app/domain/model"
+	"godev.com/todo-app/infrastructure/rest"
 )
 
 type TaskMySqlRepository struct {

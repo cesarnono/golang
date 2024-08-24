@@ -1,8 +1,8 @@
 package rest
 
 import (
-	"godev.com/todo-app/src/application"
-	"godev.com/todo-app/src/domain/model"
+	"godev.com/todo-app/application"
+	"godev.com/todo-app/domain/model"
 	"gofr.dev/pkg/gofr"
 )
 

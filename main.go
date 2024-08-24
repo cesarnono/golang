@@ -1,11 +1,11 @@
 package main
 
 import (
-	"godev.com/todo-app/src/application"
-	"godev.com/todo-app/src/domain/model"
-	"godev.com/todo-app/src/infrastructure/repository/mysql"
-	"godev.com/todo-app/src/infrastructure/rest"
-	"godev.com/todo-app/src/migration"
+	"godev.com/todo-app/application"
+	"godev.com/todo-app/domain/model"
+	"godev.com/todo-app/infrastructure/repository/mysql"
+	"godev.com/todo-app/infrastructure/rest"
+	"godev.com/todo-app/migration"
 	"gofr.dev/pkg/gofr"
 )
 

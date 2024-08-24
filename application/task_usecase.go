@@ -1,7 +1,7 @@
 package application
 
 import (
-	"godev.com/todo-app/src/domain/model"
+	"godev.com/todo-app/domain/model"
 )
 
 type TaskUseCase struct {
