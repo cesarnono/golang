@@ -15,6 +15,10 @@ func main() {
     app := gofr.New()
 
     app.Migrate(migration.All())
+    app.GET("/greet", func(ctx *gofr.Context) (interface{}, error) {
+
+        return "Hello World!", nil
+    })
     app.POST("/task", func(ctx *gofr.Context) (interface{}, error) {
       return taskController.CreateTask(ctx);
     })
